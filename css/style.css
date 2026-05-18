@@ -1202,10 +1202,11 @@ section { position: relative; z-index: 1; }
 }
 .ambulantes-headline-wrap .section-title { flex: 1; min-width: 260px; }
 .ambulantes-baldes-img {
-  width: clamp(160px, 22vw, 300px);
+  width: clamp(180px, 24vw, 340px);
   height: auto;
   object-fit: contain;
-  filter: drop-shadow(0 8px 24px rgba(201,168,76,0.18));
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 4px 16px rgba(201,168,76,0.15));
   flex-shrink: 0;
 }
 @media (max-width: 768px) {
