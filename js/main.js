@@ -112,6 +112,39 @@
     startAuto();
   })();
 
+  /* ── MODAL VÍDEO GALERIA ────────────────────────────────── */
+  window.openVideoModal = function () {
+    const modal = document.getElementById('video-modal');
+    const mv    = document.getElementById('modal-video');
+    if (!modal || !mv) return;
+    modal.classList.add('open');
+    mv.currentTime = 0;
+    mv.play();
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeVideoModal = function (e) {
+    /* Fecha ao clicar no backdrop ou no botão X */
+    if (e && e.currentTarget !== e.target && !e.target.closest('.video-modal-close')) return;
+    const modal = document.getElementById('video-modal');
+    const mv    = document.getElementById('modal-video');
+    if (!modal) return;
+    modal.classList.remove('open');
+    if (mv) mv.pause();
+    document.body.style.overflow = '';
+  };
+
+  /* Fechar com ESC */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('video-modal');
+      const mv    = document.getElementById('modal-video');
+      if (modal) modal.classList.remove('open');
+      if (mv)    mv.pause();
+      document.body.style.overflow = '';
+    }
+  });
+
   /* ── CURSOR GLOW (desktop) ─────────────────────────────── */
   if (window.matchMedia('(pointer: fine)').matches) {
     const glow = document.createElement('div');
