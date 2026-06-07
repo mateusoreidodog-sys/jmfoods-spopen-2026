@@ -164,7 +164,7 @@
 
     if (tagline) {
       setTimeout(() => {
-        typewrite(tagline, 'A EXPERIÊNCIA EM A&B QUE TRANSFORMA EVENTOS EM MEMÓRIAS', 50, () => {
+        typewrite(tagline, 'A OPERAÇÃO DE PIPOCA QUE O CLUBE JUVENTUS MERECE', 50, () => {
           if (subtitle) setTimeout(() => { subtitle.style.transition = 'opacity 0.8s ease'; subtitle.style.opacity = '1'; }, 100);
           if (divider)  setTimeout(() => { divider.style.transition  = 'opacity 0.6s ease'; divider.style.opacity  = '1'; }, 300);
           if (scroll)   setTimeout(() => { scroll.style.transition   = 'opacity 0.6s ease'; scroll.style.opacity   = '1'; }, 600);

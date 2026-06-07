@@ -30,7 +30,9 @@
   --popcorn-alt:   #FFB300;
 
   /* Marca */
-  --red-jm:        #CC2200;
+  --red-jm:        #E3000F;
+  --juventus-red:  #E3000F;
+  --juventus-black:#111111;
   --green-sp:      #4A9A35;
 
   /* Elementos */
@@ -622,8 +624,8 @@ section { position: relative; z-index: 1; }
   box-shadow: 0 0 20px rgba(255,215,0,0.5);
 }
 .timeline-item.next .timeline-dot {
-  background: var(--green-sp);
-  box-shadow: 0 0 14px rgba(74,154,53,0.5);
+  background: var(--juventus-red);
+  box-shadow: 0 0 14px rgba(227,0,15,0.5);
 }
 
 .timeline-year {
@@ -633,7 +635,7 @@ section { position: relative; z-index: 1; }
   color: var(--gold-bright);
   margin-bottom: 0.3rem;
 }
-.timeline-item.next .timeline-year { color: var(--green-sp); }
+.timeline-item.next .timeline-year { color: var(--juventus-red); }
 
 .timeline-title {
   font-family: var(--font-display);
@@ -761,32 +763,30 @@ section { position: relative; z-index: 1; }
   position: relative;
 }
 
-/* Vídeo de fundo — um pouco mais visível */
-.pipoca-hero-bgvideo {
+/* ─── CHUVA DE PIPOCAS (fundo pipoca-hero) ──────────────────── */
+.pipoca-rain {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  pointer-events: none;
   z-index: 0;
-  opacity: 0.42;
-  filter: saturate(1.15) brightness(1.05);
-  pointer-events: none;
+  overflow: hidden;
 }
-
-/* Overlay creme — levemente mais transparente para deixar o vídeo respirar */
-.pipoca-hero-overlay {
+.pipoca-rain span {
   position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(244,237,224,0.82) 0%,
-      rgba(244,237,224,0.62) 40%,
-      rgba(244,237,224,0.75) 100%
-    );
+  top: -70px;
+  left: var(--x, 50%);
+  width: var(--sz, 36px);
+  height: var(--sz, 36px);
+  background: url('../assets/pipcoa caindo.png') center / contain no-repeat;
+  animation: pipocaFall var(--dur, 4s) var(--delay, 0s) linear infinite;
+  opacity: 0.55;
+  transform: rotate(var(--rot, 0deg));
+}
+@keyframes pipocaFall {
+  0%   { transform: translateY(0px) rotate(var(--rot, 0deg)); opacity: 0; }
+  8%   { opacity: 0.55; }
+  92%  { opacity: 0.45; }
+  100% { transform: translateY(calc(100vh + 100px)) rotate(calc(var(--rot, 0deg) + 360deg)); opacity: 0; }
 }
 
 .pipoca-hero-layout {
@@ -1266,6 +1266,38 @@ section { position: relative; z-index: 1; }
   transition: background 0.2s;
 }
 .video-modal-close:hover { background: rgba(201,168,76,0.8); }
+
+/* ─── IDENTIDADE JUVENTUS — acentos visuais ─────────────────── */
+
+/* Barra decorativa vermelha nos event-cards destaque */
+.event-card.featured {
+  border-top: 3px solid var(--juventus-red) !important;
+}
+
+/* Badge Juventus no argumento check */
+.argumento-check svg path { stroke: var(--juventus-red); }
+
+/* Faixa decorativa entre seções — listras vermelhas e pretas */
+.juventus-stripe {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--juventus-red) 0px,
+    var(--juventus-red) 24px,
+    var(--juventus-black) 24px,
+    var(--juventus-black) 48px
+  );
+  opacity: 0.85;
+}
+
+/* Número item — destaque vermelho ao hover */
+.numero-item:hover .numero-value { color: var(--juventus-red); }
+
+/* Timeline next item title vermelho */
+.timeline-item.next .timeline-title { color: var(--juventus-red); }
+
+/* Metric cards — borda esquerda vermelha em hover */
+.metric-card:hover { border-left: 3px solid var(--juventus-red); }
 
 /* ─── DIVISOR DOURADO ───────────────────────────────────────── */
 .gold-divider {
