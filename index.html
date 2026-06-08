@@ -73,26 +73,7 @@
       <div class="tennis-ball-x">
         <div class="tennis-ball-y">
           <div class="tennis-ball">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Base branca -->
-              <circle cx="24" cy="24" r="22" fill="white"/>
-              <!-- Manchas pretas clássicas de bola de futebol -->
-              <polygon points="24,4 30,11 24,17 18,11" fill="#111"/>
-              <polygon points="8,16 15,12 18,19 12,24 6,20" fill="#111"/>
-              <polygon points="40,16 33,12 30,19 36,24 42,20" fill="#111"/>
-              <polygon points="11,35 8,27 14,24 20,29 17,36" fill="#111"/>
-              <polygon points="37,35 40,27 34,24 28,29 31,36" fill="#111"/>
-              <polygon points="24,44 18,38 22,31 26,31 30,38" fill="#111"/>
-              <polygon points="24,17 30,19 31,26 24,30 17,26 18,19" fill="#111"/>
-              <!-- Brilho -->
-              <circle cx="24" cy="24" r="22" fill="url(#sbGrad)"/>
-              <defs>
-                <radialGradient id="sbGrad" cx="36%" cy="28%" r="50%">
-                  <stop offset="0%"  stop-color="white" stop-opacity="0.28"/>
-                  <stop offset="100%" stop-color="black" stop-opacity="0.06"/>
-                </radialGradient>
-              </defs>
-            </svg>
+            <img src="assets/bola de futebol.png" alt="" width="48" height="48" style="width:100%;height:100%;object-fit:contain;display:block;" />
           </div>
         </div>
       </div>
@@ -348,6 +329,15 @@
 ══════════════════════════════════════════════════════════ -->
 <section id="pipoca-hero">
 
+  <!-- Vídeo de fundo em loop -->
+  <video
+    class="pipoca-hero-bgvideo"
+    src="assets/video pipoca caindo.mp4"
+    autoplay loop muted playsinline
+    aria-hidden="true"
+  ></video>
+  <div class="pipoca-hero-overlay"></div>
+
   <!-- Chuva de pipocas no fundo -->
   <div class="pipoca-rain" aria-hidden="true">
     <span style="--x:5%;  --delay:0s;   --dur:3.8s; --sz:38px; --rot:15deg"></span>
@@ -579,6 +569,10 @@
       <div class="gallery-track" id="gallery-track">
 
         <div class="gallery-slide">
+          <img src="assets/nossa operação/ambulante pipoca.png" alt="Ambulante de Pipoca JM Foods" loading="lazy" />
+        </div>
+
+        <div class="gallery-slide">
           <img src="assets/nossa operação/quiosque pipoca.jpeg" alt="Quiosque de Pipoca JM Foods" loading="lazy" />
         </div>
 
@@ -605,7 +599,7 @@
       </div><!-- /gallery-track -->
     </div><!-- /gallery-wrap -->
 
-    <!-- Dots — 6 slides -->
+    <!-- Dots — 7 slides -->
     <div class="gallery-nav">
       <button class="gallery-dot active" aria-label="Slide 1"></button>
       <button class="gallery-dot" aria-label="Slide 2"></button>
@@ -613,6 +607,7 @@
       <button class="gallery-dot" aria-label="Slide 4"></button>
       <button class="gallery-dot" aria-label="Slide 5"></button>
       <button class="gallery-dot" aria-label="Slide 6"></button>
+      <button class="gallery-dot" aria-label="Slide 7"></button>
     </div>
 
   </div>
@@ -712,7 +707,7 @@
       </div>
       <div class="contact-item">
         <div class="contact-label">Telefone</div>
-        <div class="contact-value">(11) 95386-2539</div>
+        <div class="contact-value">(11) 99554-1811</div>
       </div>
     </div>
 
