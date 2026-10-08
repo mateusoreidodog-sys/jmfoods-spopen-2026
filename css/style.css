@@ -1,5 +1,5 @@
 /* ============================================================
-   JM FOODS × SP OPEN 2026 — PREMIUM INSTITUTIONAL SITE
+   JM FOODS A&B — SITE INSTITUCIONAL PREMIUM
    Tema: Creme Quente / Premium Claro
    ============================================================ */
 
@@ -624,8 +624,8 @@ section { position: relative; z-index: 1; }
   box-shadow: 0 0 20px rgba(255,215,0,0.5);
 }
 .timeline-item.next .timeline-dot {
-  background: var(--juventus-red);
-  box-shadow: 0 0 14px rgba(227,0,15,0.5);
+  background: var(--gold);
+  box-shadow: 0 0 14px rgba(201,168,76,0.5);
 }
 
 .timeline-year {
@@ -635,7 +635,7 @@ section { position: relative; z-index: 1; }
   color: var(--gold-bright);
   margin-bottom: 0.3rem;
 }
-.timeline-item.next .timeline-year { color: var(--juventus-red); }
+.timeline-item.next .timeline-year { color: var(--gold); }
 
 .timeline-title {
   font-family: var(--font-display);
@@ -1293,37 +1293,45 @@ section { position: relative; z-index: 1; }
 }
 .video-modal-close:hover { background: rgba(201,168,76,0.8); }
 
-/* ─── IDENTIDADE JUVENTUS — acentos visuais ─────────────────── */
+/* ─── IDENTIDADE JM FOODS — acentos visuais ─────────────────── */
 
-/* Barra decorativa vermelha nos event-cards destaque */
+/* Barra dourada nos event-cards destaque */
 .event-card.featured {
-  border-top: 3px solid var(--juventus-red) !important;
+  border-top: 3px solid var(--gold) !important;
 }
 
-/* Badge Juventus no argumento check */
-.argumento-check svg path { stroke: var(--juventus-red); }
+/* Check nos argumentos — dourado */
+.argumento-check svg path { stroke: var(--gold); }
 
-/* Faixa decorativa entre seções — listras vermelhas e pretas */
-.juventus-stripe {
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--juventus-red) 0px,
-    var(--juventus-red) 24px,
-    var(--juventus-black) 24px,
-    var(--juventus-black) 48px
-  );
-  opacity: 0.85;
+/* Número item — destaque dourado ao hover */
+.numero-item:hover .numero-value { color: var(--gold); }
+
+/* Metric cards — borda esquerda dourada em hover */
+.metric-card:hover { border-left: 3px solid var(--gold); }
+
+/* ─── SECTION PORTFÓLIO COMPLETO ────────────────────────────── */
+#portfolio { padding: 10rem 0; background: var(--bg-alt); }
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 4rem;
 }
 
-/* Número item — destaque vermelho ao hover */
-.numero-item:hover .numero-value { color: var(--juventus-red); }
+.produto-icon {
+  font-size: 2.8rem;
+  margin: 0 auto 1.25rem;
+  display: block;
+  line-height: 1;
+}
 
-/* Timeline next item title vermelho */
-.timeline-item.next .timeline-title { color: var(--juventus-red); }
-
-/* Metric cards — borda esquerda vermelha em hover */
-.metric-card:hover { border-left: 3px solid var(--juventus-red); }
+.produto-desc {
+  font-size: 0.8rem;
+  color: var(--text-sec);
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
 
 /* ─── DIVISOR DOURADO ───────────────────────────────────────── */
 .gold-divider {
@@ -1344,6 +1352,7 @@ section { position: relative; z-index: 1; }
 @media (max-width: 1100px) {
   .eventos-grid { grid-template-columns: repeat(2, 1fr); }
   .produtos-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 1024px) {
   .ambulantes-layout { grid-template-columns: 1fr; }
@@ -1359,6 +1368,7 @@ section { position: relative; z-index: 1; }
   .eventos-grid { grid-template-columns: 1fr; }
   .numeros-grid { grid-template-columns: repeat(3, 1fr); }
   .produtos-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .argumentos { grid-template-columns: 1fr; }
   .timeline { padding-left: 2rem; }
   .gallery-slide { flex: 0 0 calc(100% - 0px); min-width: 100%; }
@@ -1368,4 +1378,5 @@ section { position: relative; z-index: 1; }
   .numeros-grid { grid-template-columns: 1fr; }
   .numero-item + .numero-item::before { display: none; }
   .produtos-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
 }
