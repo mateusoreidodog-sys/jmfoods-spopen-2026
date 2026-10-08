@@ -1082,6 +1082,13 @@ section { position: relative; z-index: 1; }
   position: relative;
 }
 
+.gallery-slide-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gallery-video {
   width: 100%;
   height: 100%;
