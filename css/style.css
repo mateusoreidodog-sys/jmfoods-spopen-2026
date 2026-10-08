@@ -969,7 +969,31 @@ section { position: relative; z-index: 1; }
 
 /* ─── SECTION: IMAGENS (Galeria) ────────────────────────────── */
 #imagens { padding: 10rem 0; background: var(--bg); overflow: hidden; }
+#imagens-top { padding: 8rem 0; background: var(--bg-alt); overflow: hidden; }
 
+/* Wrapper externo — setas ficam fora do overflow */
+.gallery-outer {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Setas externas — sempre visíveis */
+.gallery-arrows-outer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Track wrapper — overflow hidden somente aqui */
+.gallery-track-wrap {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Mantém compatibilidade com .gallery-wrap legado */
 .gallery-wrap {
   margin-top: 4rem;
   position: relative;
@@ -1043,6 +1067,16 @@ section { position: relative; z-index: 1; }
 }
 .gallery-dot.active { background: var(--gold); transform: scale(1.5); }
 
+/* Dots para segunda galeria — mesmas regras */
+.gallery-dot-top {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border-gold);
+  border: none; cursor: pointer; transition: all var(--tr-fast);
+  padding: 0; flex-shrink: 0;
+}
+.gallery-dot-top.active { background: var(--gold); transform: scale(1.5); }
+
 /* Slide de vídeo */
 .gallery-slide-video {
   position: relative;
@@ -1073,25 +1107,16 @@ section { position: relative; z-index: 1; }
   backdrop-filter: blur(4px);
 }
 
-.gallery-arrows {
-  position: absolute;
-  top: 50%; left: 0; right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  padding: 0 0.5rem;
-}
 .gallery-arrow {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   pointer-events: auto;
-  background: rgba(250,248,242,0.9);
+  background: var(--bg-card);
   border: 1px solid var(--border-gold);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  pointer-events: all;
   transition: all var(--tr-fast);
   box-shadow: 0 2px 12px var(--shadow-med);
+  border-radius: 2px;
 }
 .gallery-arrow:hover { background: var(--gold); border-color: var(--gold); }
 .gallery-arrow:hover svg { color: white; }
@@ -1361,6 +1386,10 @@ section { position: relative; z-index: 1; }
   .gallery-slide { flex: 0 0 calc(50% - 0.75rem); min-width: calc(50% - 0.75rem); }
 }
 @media (max-width: 768px) {
+  .gallery-outer { gap: 0.5rem; }
+  .gallery-arrows-outer { flex-direction: row; order: 2; justify-content: center; }
+  .gallery-track-wrap { order: 1; width: 100%; }
+  .gallery-outer { flex-wrap: wrap; }
   #navbar { padding: 1rem 1.5rem; }
   #navbar.scrolled { padding: 0.75rem 1.5rem; }
   .nav-links { display: none; }

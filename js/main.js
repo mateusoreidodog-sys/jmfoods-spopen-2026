@@ -37,20 +37,20 @@
     });
   });
 
-  /* ── CARROSSEL DE IMAGENS ───────────────────────────────── */
-  (function initGallery() {
-    const track  = document.getElementById('gallery-track');
-    const dots   = document.querySelectorAll('.gallery-dot');
-    const btnPrev = document.getElementById('gallery-prev');
-    const btnNext = document.getElementById('gallery-next');
+  /* ── CARROSSEL DE IMAGENS (genérico) ───────────────────────── */
+  function initGallery(trackId, prevId, nextId, dotClass) {
+    const track   = document.getElementById(trackId);
+    const dots    = document.querySelectorAll('.' + dotClass);
+    const btnPrev = document.getElementById(prevId);
+    const btnNext = document.getElementById(nextId);
     if (!track) return;
 
-    const slides  = track.querySelectorAll('.gallery-slide');
+    const slides = track.querySelectorAll('.gallery-slide');
     if (!slides.length) return;
 
     let current  = 0;
     let autoTimer = null;
-    let perView   = getPerView();
+    let perView  = getPerView();
 
     function getPerView() {
       if (window.innerWidth <= 768)  return 1;
@@ -58,46 +58,33 @@
       return 3;
     }
 
-    function maxIndex() {
-      return Math.max(0, slides.length - perView);
-    }
+    function maxIndex() { return Math.max(0, slides.length - perView); }
 
     function goTo(idx) {
       perView = getPerView();
-      const max = maxIndex();
-      current = Math.min(Math.max(idx, 0), max);
-
-      const slideW  = slides[0].getBoundingClientRect().width;
-      const gap     = 24; /* 1.5rem */
-      const offset  = current * (slideW + gap);
-      track.style.transform = `translateX(-${offset}px)`;
-
+      current = Math.min(Math.max(idx, 0), maxIndex());
+      const slideW = slides[0].getBoundingClientRect().width;
+      const gap    = 24;
+      track.style.transform = `translateX(-${current * (slideW + gap)}px)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
 
-    function next() { goTo(current + 1 >= slides.length - perView + 1 ? 0 : current + 1); }
+    function next() { goTo(current + 1 > maxIndex() ? 0 : current + 1); }
     function prev() { goTo(current - 1 < 0 ? maxIndex() : current - 1); }
 
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(next, 3800);
-    }
-    function stopAuto() { clearInterval(autoTimer); }
+    function startAuto() { stopAuto(); autoTimer = setInterval(next, 3800); }
+    function stopAuto()  { clearInterval(autoTimer); }
 
-    /* Dots */
-    dots.forEach((d, i) => {
-      d.addEventListener('click', () => { goTo(i); startAuto(); });
-    });
-
-    /* Setas */
+    dots.forEach((d, i) => d.addEventListener('click', () => { goTo(i); startAuto(); }));
     if (btnPrev) btnPrev.addEventListener('click', () => { prev(); startAuto(); });
     if (btnNext) btnNext.addEventListener('click', () => { next(); startAuto(); });
 
-    /* Pause on hover */
-    track.parentElement?.addEventListener('mouseenter', stopAuto);
-    track.parentElement?.addEventListener('mouseleave', startAuto);
+    const wrap = track.closest('.gallery-track-wrap') || track.closest('.gallery-outer');
+    if (wrap) {
+      wrap.addEventListener('mouseenter', stopAuto);
+      wrap.addEventListener('mouseleave', startAuto);
+    }
 
-    /* Swipe touch */
     let touchStartX = 0;
     track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend',   e => {
@@ -106,11 +93,13 @@
     });
 
     window.addEventListener('resize', () => { perView = getPerView(); goTo(current); });
-
-    /* Init dots */
     if (dots.length) dots[0].classList.add('active');
     startAuto();
-  })();
+  }
+
+  /* Inicializa as duas galerias */
+  initGallery('gallery-track',     'gallery-prev',     'gallery-next',     'gallery-dot');
+  initGallery('gallery-track-top', 'gallery-prev-top', 'gallery-next-top', 'gallery-dot-top');
 
   /* ── MODAL VÍDEO GALERIA ────────────────────────────────── */
   window.openVideoModal = function () {
