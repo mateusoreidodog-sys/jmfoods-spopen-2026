@@ -1084,6 +1084,7 @@ section { position: relative; z-index: 1; }
 }
 .gallery-arrow {
   width: 44px; height: 44px;
+  pointer-events: auto;
   background: rgba(250,248,242,0.9);
   border: 1px solid var(--border-gold);
   display: flex; align-items: center; justify-content: center;
